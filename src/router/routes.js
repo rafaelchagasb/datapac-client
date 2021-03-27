@@ -1,0 +1,21 @@
+const routes = [
+  {
+    path: '/',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Index.vue') },
+      { path: 'printer', component: () => import('pages/printers/List.vue') },
+      { path: 'printer/edit', component: () => import('pages/printers/Edit.vue') },
+      { path: 'printer/new', component: () => import('pages/printers/New.vue') },
+    ],
+  },
+
+  // Always leave this as last one,
+  // but you can also remove it
+  {
+    path: '*',
+    component: () => import('pages/Error404.vue'),
+  },
+];
+
+export default routes;
