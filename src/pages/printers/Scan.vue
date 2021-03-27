@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-quagga :onDetected="logIt" :readerSize="readerSize" :readerTypes="['ean_reader']"></v-quagga>
+    <v-quagga :onDetected="logIt" :readerSize="readerSize" :readerTypes="['code_128_reader']"></v-quagga>
   </div>
 </template>
 
@@ -19,9 +19,9 @@ export default {
   },
   methods: {
     logIt (data) {
-      console.log('detected', data)
+      //console.log(data);
+      alert(data.codeResult.code)
     }
-
   }
 }
 </script>
