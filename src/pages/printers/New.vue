@@ -18,7 +18,7 @@
         />
       </div>
 
-      <q-footer>
+      <q-footer class="shadow-up-5">
         <q-btn class="col-12 q-pa-md full-width" color="blue" label="Save"  @click="savePrinter" />
       </q-footer>
     </div>
