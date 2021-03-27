@@ -51,7 +51,7 @@
 </template>
 
 <script>
-export default {
+export default { 
   name: 'Printer_List',
   methods: {
       openPrinter: function() {

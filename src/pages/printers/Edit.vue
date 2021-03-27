@@ -18,7 +18,7 @@
         <q-page-sticky position="bottom-right" :offset="[18, 18]">
             <q-btn fab icon="note_add" color="blue" @click="newService" />
         </q-page-sticky>
-    </div>
+    </div> 
 </div>
 </template>
 

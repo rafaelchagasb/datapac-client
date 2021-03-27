@@ -7,7 +7,7 @@
       <q-input outlined v-model="location" label="Location" />
 
       <q-input
-        label="Description"
+        label="Description" 
         v-model="description"
         outlined
         type="textarea"

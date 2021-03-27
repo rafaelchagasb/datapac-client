@@ -9,7 +9,7 @@ const routes = [
       { path: 'printer/new', component: () => import('pages/printers/New.vue') },
       { path: 'printer/service', component: () => import('pages/printers/Service.vue') },
     ],
-  },
+  }, 
 
   // Always leave this as last one,
   // but you can also remove it
