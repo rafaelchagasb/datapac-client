@@ -1,17 +1,26 @@
 <template>
-    <div class="q-pa-md items-start q-gutter-md">
-      <q-select outlined v-model="printer" :options="optionsPrinters" label="Model" />
+    <div class="items-start">
+      <div class="q-pa-md  q-gutter-md">
 
-      <q-select outlined v-model="client" :options="optionsClients" label="Client" />
+        <q-select outlined v-model="printer" :options="optionsPrinters" label="Model" />
 
-      <q-input outlined v-model="location" label="Location" />
+        <q-select outlined v-model="client" :options="optionsClients" label="Client" />
 
-      <q-input
-        label="Description" 
-        v-model="description"
-        outlined
-        type="textarea"
-      />
+        <q-input outlined v-model="location" label="Location" />
+
+        <q-input outlined v-model="room" label="Room" />
+
+        <q-input
+          label="Description" 
+          v-model="description"
+          outlined
+          type="textarea"
+        />
+      </div>
+
+      <q-footer>
+        <q-btn class="col-12 q-pa-md full-width" color="blue" label="Save"  @click="savePrinter" />
+      </q-footer>
     </div>
 </div>
 </template>
@@ -24,6 +33,7 @@ export default {
       printer: null,
       client: null,
       location: null,
+      room: null,
       description: null,
       optionsPrinters: [
         'HP Color LaserJet Managed MFP E87640','HP Color LaserJet Enterprise flow MFP M880', 'HP PageWide Pro 477dw'
@@ -35,6 +45,11 @@ export default {
         'Munster Technological University (MTU)' ,
         'Fingal County Council (FCC)'
       ]
+    }
+  },
+  methods: {
+    savePrinter: function() {
+      this.success('Printed saved');
     }
   }
 };

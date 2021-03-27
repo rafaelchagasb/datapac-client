@@ -11,7 +11,7 @@
           label="Tonner"
         />
 
-         <q-select
+        <q-select
           filled
           v-model="drum"
           multiple
@@ -19,8 +19,23 @@
           use-chips
           stack-label
           label="Drum"
-        /> 
+        />
+        
+        <q-select
+          filled
+          v-model="trays"
+          multiple
+          :options="optionsTrays"
+          use-chips
+          stack-label
+          label="Trays"
+        />
 
+        <q-checkbox v-model="tonnerCollection" label="Tonner Collection Unit" />
+
+        <q-checkbox v-model="fuser" label="Fuser" />
+        
+        <q-checkbox v-model="adfRollers" label="ADF Rollers " />
     </div>
 </div>
 </template>
@@ -32,8 +47,14 @@ export default {
       return {
           tonner: null,
           drum: null,
+          tonnerCollection: false,
+          fuser: false,
+          adfRollers: false,
+          trays: null,
           optionsTonner: [ 'Black', 'Yellow', 'Cyan', 'Magenta' ],
-          optionsDrum: [ 'Black', 'Yellow', 'Cyan', 'Magenta' ]
+          optionsDrum: [ 'Black', 'Yellow', 'Cyan', 'Magenta' ],
+          optionsTrays: [ 'Tray 1', 'Tray 2', 'Tray 3', 'Tray 4' ]
+
       }
   }
 };
