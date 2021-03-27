@@ -19,7 +19,7 @@
           use-chips
           stack-label
           label="Drum"
-        />
+        /> 
 
     </div>
 </div>
