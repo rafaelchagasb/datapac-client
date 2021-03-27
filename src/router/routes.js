@@ -8,6 +8,7 @@ const routes = [
       { path: 'printer/edit', component: () => import('pages/printers/Edit.vue') },
       { path: 'printer/new', component: () => import('pages/printers/New.vue') },
       { path: 'printer/service', component: () => import('pages/printers/Service.vue') },
+      { path: 'printer/scan', component: () => import('pages/printers/Scan.vue') },
     ],
   }, 
 

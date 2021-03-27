@@ -11,6 +11,10 @@
             </q-input>
         </div>
 
+        <div class="col-12">
+            <q-btn label="Scan Bar Code" color="blue" @click="goScan" />
+        </div>
+
         <q-card class="col-12 my-card" flat bordered>
             <q-card-section horizontal @click="openPrinter">
                 <q-img
@@ -59,6 +63,9 @@ export default {
       },
       newPrinter: function() {
         this.$router.push('printer/new');
+      },
+      goScan: function() {
+        this.$router.push('printer/scan');
       }
   }
 };
