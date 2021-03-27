@@ -55,11 +55,10 @@ export default {
   name: 'Printer_List',
   methods: {
       openPrinter: function() {
-          console.log('open');
-          this.$router.push('printer/edit');
+        this.$router.push('printer/edit');
       },
       newPrinter: function() {
-          this.$router.push('printer/new');
+        this.$router.push('printer/new');
       }
   }
 };

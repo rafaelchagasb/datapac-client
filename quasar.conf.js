@@ -118,9 +118,9 @@ module.exports = function (/* ctx */) {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: 'Quasar App',
-        short_name: 'Quasar App',
-        description: 'A Quasar Framework app',
+        name: 'Datapac',
+        short_name: 'Datapac App',
+        description: '',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',

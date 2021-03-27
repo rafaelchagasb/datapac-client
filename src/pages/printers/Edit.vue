@@ -15,12 +15,20 @@
               </q-card-section>
           </q-card-section>
         </q-card>
+        <q-page-sticky position="bottom-right" :offset="[18, 18]">
+            <q-btn fab icon="note_add" color="blue" @click="newService" />
+        </q-page-sticky>
     </div>
 </div>
 </template>
 
 <script>
 export default {
-  name: 'Printer_Edit'
+  name: 'Printer_Edit',
+  methods: {
+      newService: function() {
+        this.$router.push('service');
+      }
+  }
 };
 </script>
