@@ -11,6 +11,17 @@
         </q-toolbar-title>
       </q-toolbar>
     </q-header>
+    <!-- <q-header>
+      <q-toolbar class="bg-blue">
+        <q-btn flat dense icon="menu" class="q-mr-sm" />
+        <q-avatar>
+            <img src="https://cdn.quasar.dev/logo/svg/quasar-logo.svg">
+        </q-avatar>
+
+        <q-toolbar-title>Datapac</q-toolbar-title>
+
+        </q-toolbar>
+    </q-header> -->
     <q-page-container>
       <router-view />
     </q-page-container>
