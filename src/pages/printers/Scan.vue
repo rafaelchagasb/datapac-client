@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     logIt (data) {
-      //console.log(data);
+      console.log(data);
       alert(data.codeResult.code)
     }
   }

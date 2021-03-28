@@ -2,11 +2,14 @@ import axios from 'axios';
 import { Loading } from 'quasar';
 
 class ApiBase {
-  constructor(url) {
+  constructor(path) {
+    const baseUrl = process.env.API;
     this.http = axios.create({
-      baseURL: url,
-      timeout: 1000,
-      headers: {},
+      baseURL: baseUrl + '/api/' + path,
+      timeout: 10000,
+      headers: {
+        "Access-Control-Allow-Origin": "*"
+      },
     });
     this.http.interceptors.request.use(
       (config) => {
@@ -25,13 +28,15 @@ class ApiBase {
     );
   }
 
-  get = () => this.http.get('/').data;
+  read = async () =>  (await this.http.get('/')).data;
 
-  post = (model) => this.http.post('/', model).data;
+  getById = async (id) =>  (await this.http.get(`/${id}`)).data;
 
-  update = (id, model) => this.http.put(`/${id}`, model).data;
+  post = async (model) => (await this.http.post('/', model)).data;
 
-  delete = (id) => this.http.delete(`/${id}`).data;
+  update = async (id, model) => (await this.http.put(`/${id}`, model)).data;
+
+  delete = async (id) => (await this.http.delete(`/${id}`)).data;
 }
 
-export default ServiceBase;
+export default ApiBase;

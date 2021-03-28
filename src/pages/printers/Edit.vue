@@ -13,20 +13,24 @@
             </q-toolbar>
         </q-header> -->
 
-         
-        
-        <div class="q-pa-md items-start q-gutter-md">
+        <div v-if="printer" class="q-pa-md items-start q-gutter-md">
+            
             <q-card class="q-pl-md full-width my-card" flat bordered v-if="tab == 'information'">
             <q-card-section >
                 <q-img
                     class="col-2"
-                    src="https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c06264658.png"
+                    :src="printer.model.imageUrl"
                 />
                 <q-card-section class="q-pt-xs">
-                    <div class="text-h5 q-mt-sm q-mb-xs">HP Color Laserjet E87640</div>
-                    <div class="text-caption text-grey">
+                    <div class="caption">
+                        <div>
+                            <q-icon name="fas fa-barcode" />
+                            {{ printer.barcode }}
+                        </div>
+                        <div>
                             <q-icon name="room" />
-                        Trinity College Dublin > Dublin > Room 5
+                            {{ printer.location }} > {{ printer.room }}
+                        </div>
                     </div>
                 </q-card-section>
             </q-card-section>
@@ -55,13 +59,18 @@ export default {
   name: 'Printer_Edit',
   data() {
       return {
-          tab: 'information'
+          tab: 'information',
+          printer: null
       }
   },
   methods: {
       newService: function() {
         this.$router.push('service');
       }
+  },
+  async mounted() {
+    const  { id } = this.$route.params;
+    this.printer = await this.$api.printer.getById(id);
   }
 };
 </script>

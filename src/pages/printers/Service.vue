@@ -83,7 +83,7 @@ export default {
   },
   methods: {
     saveService: function() {
-      this.success("Saved service");
+      this.$notify.success("Saved service");
     }
   }
 };

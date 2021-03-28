@@ -2,6 +2,8 @@
     <div class="items-start">
       <div class="q-pa-md  q-gutter-md">
 
+        <q-input outlined v-model="barcode" label="Bar code" />
+
         <q-select outlined v-model="printer" :options="optionsPrinters" label="Model" />
 
         <q-select outlined v-model="client" :options="optionsClients" label="Client" />
@@ -30,27 +32,81 @@ export default {
   name: 'Printer_Edit',
   data () {
     return {
+      barcode: null,
       printer: null,
       client: null,
       location: null,
       room: null,
       description: null,
-      optionsPrinters: [
-        'HP Color LaserJet Managed MFP E87640','HP Color LaserJet Enterprise flow MFP M880', 'HP PageWide Pro 477dw'
-      ],
-      optionsClients: [
-        'Trinity College Dublin (TCD)', 
-        'Dublin Airport Authority (DAA)', 
-        'Technological University Dublin (TUD)', 
-        'Munster Technological University (MTU)' ,
-        'Fingal County Council (FCC)'
-      ]
+      optionsPrinters: [],
+      optionsClients: []
     }
   },
   methods: {
-    savePrinter: function() {
-      this.success('Printed saved');
+    savePrinter: async function() {
+
+      if(!this.barcode) {
+        this.$notify.warn("Barcode is required");
+        return;
+      }
+      
+      if(!this.printer) {
+        this.$notify.warn("Model is required");
+        return;
+      }
+
+      if(!this.client) {
+        this.$notify.warn("Client is required");
+        return;
+      }
+
+      if(!this.location) {
+        this.$notify.warn("Location is required");
+        return;
+      }
+
+      const data = {
+        barcode: this.barcode,
+        model: this.printer.value,
+        client:	this.client.value,
+        location: this.location,
+        room: this.room,
+        description: this.description
+      }
+
+      let printerSaved = (await this.$api.printer.post(data));
+      
+      this.$notify.success('Printed saved');
+
+      this.$router.push({ path: `edit/${printerSaved.id}` });
+    },
+    fill() {
+      this.fillModels();
+      this.fillClients();
+    }, 
+    async fillModels() {
+      let data = (await this.$api.modelPrinter.read());
+
+      if(data) {
+        this.optionsPrinters = data.map(x => ({
+          label: x.description,
+          value: x.id
+        }));
+      }
+    },
+    async fillClients() {
+      let data = (await this.$api.client.read());
+
+      if(data) {
+        this.optionsClients = data.map(x => ({
+          label: x.description,
+          value: x.id
+        }));
+      }
     }
+  },
+  async created() {
+    await this.fill();
   }
 };
 </script>

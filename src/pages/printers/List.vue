@@ -15,33 +15,23 @@
             <q-btn label="Scan Bar Code" color="blue" @click="goScan" />
         </div>
 
-        <q-card class="col-12 my-card" flat bordered>
-            <q-card-section horizontal @click="openPrinter">
+        <q-card v-for="printer in printers" :key="printer.id" class="col-12 my-card" flat bordered>
+            <q-card-section horizontal @click="openPrinter(printer.id)">
                 <q-img
                     class="col-3"
-                    src="https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c06264658.png"
+                    :src="printer.model.imageUrl"
                 />
                 <q-card-section class="q-pt-xs">
-                    <div class="text-h5 q-mt-sm q-mb-xs">HP Color Laserjet E87640</div>
-                    <div class="text-caption text-grey">
-                         <q-icon name="room" />
-                        Trinity College Dublin > Dublin > Room 5
-                    </div>
-                </q-card-section>
-            </q-card-section>
-        </q-card>
-
-        <q-card class="col-12 my-card" flat bordered>
-            <q-card-section horizontal @click="openPrinter">
-                <q-img
-                    class="col-3"
-                    src="https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c06264658.png"
-                />
-                <q-card-section class="q-pt-xs">
-                    <div class="text-h5 q-mt-sm q-mb-xs">HP Color Laserjet E87640</div>
-                    <div class="text-caption text-grey">
-                         <q-icon name="room" />
-                        Trinity College Dublin > Dublin > Room 5
+                    <div class="text-h5 q-mt-sm q-mb-xs">{{ printer.model.description }}</div>
+                    <div class="caption">
+                        <div>
+                            <q-icon name="fas fa-barcode" />
+                            {{ printer.barcode }}
+                        </div>
+                        <div>
+                            <q-icon name="room" />
+                            {{ printer.location }} > {{ printer.room }}
+                        </div>
                     </div>
                 </q-card-section>
             </q-card-section>
@@ -57,9 +47,14 @@
 <script>
 export default { 
   name: 'Printer_List',
+  data() {
+      return {
+          printers: []
+      }
+  },
   methods: {
-      openPrinter: function() {
-        this.$router.push('printer/edit');
+      openPrinter: function(id) {
+        this.$router.push({ path: `printer/edit/${id}` });
       },
       newPrinter: function() {
         this.$router.push('printer/new');
@@ -67,6 +62,9 @@ export default {
       goScan: function() {
         this.$router.push('printer/scan');
       }
+  },
+  async mounted() {
+      this.printers = await this.$api.printer.read();
   }
 };
 </script>
