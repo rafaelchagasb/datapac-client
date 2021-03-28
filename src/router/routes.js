@@ -9,6 +9,9 @@ const routes = [
       { path: 'printer/new', component: () => import('pages/printers/New.vue') },
       { path: 'printer/service', component: () => import('pages/printers/Service.vue') },
       { path: 'printer/scan', component: () => import('pages/printers/Scan.vue') },
+
+      { path: 'client', component: () => import('pages/clients/List.vue') },
+      { path: 'client/edit/:id', component: () => import('pages/clients/Edit.vue') }
     ],
   }, 
 

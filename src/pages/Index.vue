@@ -9,6 +9,13 @@
               Printer
             </div>
           </div>
+
+          <div class="q-pa-md">
+            <q-btn round color="blue-6" icon="assignment_ind" size="2.5em" @click="goClient" />
+              <div class="col-12 q-pt-md text-center">
+              Clients
+            </div>
+          </div>
           <!-- <div class="q-pa-md">
             <q-btn round color="blue-6" icon="description" size="2.5em" />
               <div class="col-12 q-pt-md text-center">
@@ -33,6 +40,9 @@ export default {
   methods: {
     goPrinter: function() {
       this.$router.push({ path: 'printer' })
+    },
+    goClient: function() {
+      this.$router.push({ path: 'client' })
     }
   }
 };

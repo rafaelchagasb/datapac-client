@@ -79,7 +79,7 @@ module.exports = function (/* ctx */) {
       env: {
         API: process.env.DEV
           ? 'http://localhost:8080'
-          : 'http://localhost:8080'
+          : 'https://datapac-server.herokuapp.com'
       }
     },
 
