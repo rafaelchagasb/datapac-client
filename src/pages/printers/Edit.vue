@@ -57,6 +57,9 @@
 <script>
 export default {
   name: 'Printer_Edit',
+  meta: {
+    title: 'Index Page',
+  },
   data() {
       return {
           tab: 'information',
@@ -65,7 +68,7 @@ export default {
   },
   methods: {
       newService: function() {
-        this.$router.push('service');
+        this.$router.push({ name: 'service_new' });
       }
   },
   async mounted() {
